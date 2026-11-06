@@ -204,7 +204,7 @@ export const RULES = {
   fullTarget: 80, // 腹八分目
   fullMax: 120, // 腹十二分目
   fullPerItem: 20, // 1個まるごと食べたときの満腹度（満足まで4個、限界は6個）
-  sisterLookWeight: 0.7, // 妹の判定での見た目の比重
+  sisterLookWeight: 0.55, // ちひろの判定での見た目の比重（残りは中身）
   failContent: 35, // 中身の適合度がどれもこれ未満なら「失敗作」
   failSister: 40, // 妹から見た適合度がどれもこれ未満なら「得体の知れないもの」
   // 判定は「見た目上の」原形と量で行う（修復で隠せる）。

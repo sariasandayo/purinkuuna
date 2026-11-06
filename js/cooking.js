@@ -157,15 +157,17 @@ function applyFeatures(it) {
   const g = c.ing;
   const eggs = [g.whole && 0.75, g.yolk && 0.7, g.white && 0.5].filter(Boolean);
   const egg = eggs.length ? Math.max(...eggs) : 0;
+  // 乳脂肪：泡立てた生クリームも「生クリーム」として数える
+  const cream = g.cream || g.whipped;
   let fat = 0.3;
-  if (g.cream && g.milk) fat = 0.6;
-  else if (g.cream) fat = 0.85;
+  if (cream && g.milk) fat = 0.65;
+  else if (cream) fat = g.cream && g.whipped ? 0.9 : 0.85;
   else if (g.milk) fat = 0.2;
   else if (g.coconut) fat = 0.5;
   else if (g.yogurt) fat = 0.25;
   else if (g.coffee) fat = 0.05;
+  if (cream && (g.yogurt || g.coffee || g.coconut) && !g.milk) fat = 0.6; // 生クリームで割ったもの
   if (g.cream && g.lemon) fat = Math.max(fat, 0.85);
-  if (g.whipped) fat = Math.min(0.9, fat + 0.15);
   const air = c.whipAir;
 
   let set = 'none';
